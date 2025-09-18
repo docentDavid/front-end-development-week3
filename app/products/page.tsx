@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { poppins } from "../fonts";
-import { productType } from "../../types/product";
+import { productType, truncate, formatPrice } from "../../types/product";
 
 export default async function FakeStore() {
   const products = await fetch("https://fakestoreapi.com/products").then(
@@ -37,11 +37,15 @@ export default async function FakeStore() {
                 <h2 className={`${poppins.className} font-semibold text-lg`}>
                   {product.title}
                 </h2>
-                <p className="text-sm text-gray-600">{product.description}</p>
-                <div className="mt-1 text-sm">€ {product.price}</div>
+                <p className="text-sm text-gray-600">
+                  {truncate(product.description, 120)}
+                </p>
+                <div className="mt-auto text-sm font-bold mb-2">
+                  € {formatPrice(product.price)}
+                </div>
                 <Link
                   href={`/products/${product.id}`}
-                  className="mt-auto inline-flex items-center justify-center rounded-xl bg-indigo-600 px-4 py-2 text-white font-semibold hover:bg-indigo-700"
+                  className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-4 py-2 text-white font-semibold hover:bg-indigo-700"
                 >
                   View
                 </Link>

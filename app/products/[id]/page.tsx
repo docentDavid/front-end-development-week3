@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { productType } from "../../../types/product";
+import { productType, truncate, formatPrice } from "../../../types/product";
 
 export default async function ProductDetailPage({
   params,
@@ -45,7 +45,9 @@ export default async function ProductDetailPage({
         <div key={product.id}>
           <h1 className="text-2xl font-bold pb-4">{product.title}</h1>
           <p>{product.description}</p>
-          <p className="text-lg font-bold py-4">€ {product.price}</p>
+          <p className="text-lg font-bold py-4">
+            € {formatPrice(product.price)}
+          </p>
           <Image
             src={product.image}
             alt={product.title}
