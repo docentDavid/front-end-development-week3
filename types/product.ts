@@ -9,8 +9,18 @@ export type productType = {
 export function truncate(text: string, maxLength = 120): string {
   if (!text) return "";
   if (text.length <= maxLength) return text;
-  const cutoff = Math.max(0, maxLength);
-  return text.slice(0, cutoff).trimEnd() + "...";
+
+  // Find the last space before the maxLength to avoid cutting words
+  const truncated = text.slice(0, maxLength);
+  const lastSpaceIndex = truncated.lastIndexOf(" ");
+
+  // If we found a space and it's not too close to the beginning, cut there
+  if (lastSpaceIndex > maxLength * 0.5) {
+    return truncated.slice(0, lastSpaceIndex).trimEnd() + " ...";
+  }
+
+  // Fallback to the original behavior if no good space found
+  return truncated.trimEnd() + "...";
 }
 
 export function formatPrice(value: number | string): string {

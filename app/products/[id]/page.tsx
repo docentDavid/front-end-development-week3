@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { productType, truncate, formatPrice } from "../../../types/product";
+import { productType, formatPrice } from "../../../types/product";
 
 export default async function ProductDetailPage({
   params,
@@ -36,7 +36,7 @@ export default async function ProductDetailPage({
     <section className="relative overflow-hidden">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-indigo-50 to-white"
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-indigo-50 to-white dark:from-gray-900 dark:to-gray-950"
       ></div>
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
         <header className="mb-8">
@@ -56,7 +56,7 @@ export default async function ProductDetailPage({
           />
         </div>
 
-        <p className="cursor-pointer text-center pt-4 text-indigo-600">
+        <p className="cursor-pointer text-center pt-4 text-indigo-600 dark:text-indigo-400">
           <Link href="/products">Back to all products</Link>
         </p>
       </main>
