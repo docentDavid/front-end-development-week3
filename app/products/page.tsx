@@ -6,9 +6,8 @@ import { poppins } from "../fonts";
 import { productType, truncate, formatPrice } from "../../types/product";
 
 export default async function ProductsPage() {
-  const products = await fetch("https://fakestoreapi.com/products").then(
-    (response) => response.json() as Promise<productType[]>
-  );
+  const response = await fetch("https://fakestoreapi.com/products");
+  const products = (await response.json()) as productType[];
 
   return (
     <section className="relative overflow-hidden">

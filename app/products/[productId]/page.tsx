@@ -1,35 +1,33 @@
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { productType, formatPrice } from "../../../types/product";
+import NoProduct from "@/app/components/NoProduct";
 
 export default async function ProductDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ productId: string }>;
 }) {
-  const { id } = params;
-  // Check if id is a valid number
-  if (!id || isNaN(Number(id))) {
-    notFound();
+  const { productId } = await params;
+  const id = Number(productId);
+
+  // Minimal validation: handle missing/invalid ids with a simple message
+  if (!Number.isFinite(id) || id <= 0) {
+    return <NoProduct issue="The provided url has an invalid format." />;
   }
 
-  const res = await fetch(`https://fakestoreapi.com/products/${id}`);
-  if (!res.ok) {
-    notFound();
+  const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+
+  // If API says not found, show a simple fallback
+  if (!response.ok) {
+    return <NoProduct issue="We were seaching in the wrong catalog." />;
   }
 
   let product: productType | null = null;
   try {
-    const data = await res.json();
-    // Some APIs return {} or null for not found, so check for id
-    if (!data || typeof data !== "object" || !("id" in data)) {
-      notFound();
-    }
-
-    product = data as productType;
-  } catch (e) {
-    notFound();
+    product = (await response.json()) as productType;
+  } catch {
+    return <NoProduct issue="Our catalog does not contain this product." />;
   }
 
   return (
