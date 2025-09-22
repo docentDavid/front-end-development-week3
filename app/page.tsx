@@ -15,7 +15,7 @@ export default function Home() {
               <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
                 Smart solutions,
                 <br />
-                <span className="text-indigo-600">zero hassle</span>
+                <span className="text-indigo-600">zero hasslehoff</span>
               </h1>
               <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-prose">
                 ACME is a fictional company that delivers real clarity. Sharp
