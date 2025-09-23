@@ -1,4 +1,4 @@
-import { Inter, Poppins, Dancing_Script, Sixtyfour } from "next/font/google";
+import { Inter, Poppins, Sixtyfour } from "next/font/google";
 
 export const inter = Inter({
   subsets: ["latin"],
@@ -10,11 +10,6 @@ export const poppins = Poppins({
   subsets: ["latin"],
   variable: "--font-poppins",
   weight: ["400", "500", "600", "700"],
-});
-
-export const dancingScript = Dancing_Script({
-  subsets: ["latin"],
-  variable: "--font-dancing-script",
 });
 
 export const sixtyfour = Sixtyfour({
