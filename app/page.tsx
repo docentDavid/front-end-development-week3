@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden flex-1">
       {/* Background */}
       <div
         aria-hidden="true"
@@ -91,31 +91,6 @@ export default function Home() {
                   Transparent pricing and APIs that speak human.
                 </p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-gray-900 dark:bg-gray-950 py-12">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl font-bold text-white">
-              Ready to get started?
-            </h2>
-            <p className="mt-2 text-gray-300">
-              Check out our lineup or request a demo.
-            </p>
-            <div className="mt-6 flex justify-center gap-3">
-              <Link
-                href="/products"
-                className="rounded-xl bg-white px-5 py-3 font-semibold shadow hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
-              >
-                See products
-              </Link>
-              <Link
-                href="/contact"
-                className="rounded-xl border border-gray-500 px-5 py-3 font-semibold text-white hover:bg-gray-800 dark:border-gray-400 dark:hover:bg-gray-700"
-              >
-                Ask a question
-              </Link>
             </div>
           </div>
         </section>
