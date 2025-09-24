@@ -3,7 +3,8 @@ import Link from "next/link";
 
 import { poppins } from "../fonts";
 
-import { productType, truncate, formatPrice } from "../../types/product";
+import { productType } from "../../types/product";
+import { truncate, formatPrice } from "../../_lib/scripts";
 
 export default async function ProductsPage() {
   const response = await fetch("https://fakestoreapi.com/products");
@@ -11,15 +12,30 @@ export default async function ProductsPage() {
 
   return (
     <section className="relative overflow-hidden">
+      {/* Background */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-indigo-50 to-white dark:from-gray-900 dark:to-gray-950"
-      ></div>
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-indigo-50 to-white dark:from-gray-950 dark:to-black"
+      />
+      {/* Decorative blobs */}
+      <div
+        aria-hidden
+        className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-indigo-200/40 blur-3xl dark:bg-indigo-500/10"
+      />
+      <div
+        aria-hidden
+        className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-fuchsia-200/40 blur-3xl dark:bg-fuchsia-500/10"
+      />
+
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        {/* Page header */}
         <header className="mb-8">
-          <h1 className="text-3xl font-extrabold">All products</h1>
+          <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+            Browse our collection of products
+          </h1>
         </header>
 
+        {/* Cards */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product: productType) => (
             <article

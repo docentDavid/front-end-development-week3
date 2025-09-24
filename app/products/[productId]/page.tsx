@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { productType, formatPrice } from "../../../types/product";
+import { productType } from "../../../types/product";
+import { formatPrice } from "../../../_lib/scripts";
 import NoProduct from "@/app/components/NoProduct";
 import { PiLessThan } from "react-icons/pi";
 
@@ -37,7 +38,7 @@ export default async function ProductDetailPage({
   }
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden flex-1">
       {/* Background */}
       <div
         aria-hidden="true"
